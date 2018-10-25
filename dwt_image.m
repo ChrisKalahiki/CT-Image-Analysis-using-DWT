@@ -1,3 +1,5 @@
+%This code splits a single dwt image into 4 layers
+%Using a static dicom image in the main folder
 clear all;
 close all;
 i=dicomread('image.dcm');
