@@ -1,0 +1,49 @@
+close all;
+
+dcm_dir = 'dicom_dir/';
+
+%Calculate number of dicom files in dicom_dir 
+imagefiles = dir('dicom_dir/*.dcm');
+nfiles = length(imagefiles);
+
+%For each *.dcm file in the dataset, load it and add it to the images array
+for inum=1:nfiles
+    curr_name = imagefiles(inum).name;
+    curr_dcm = dicomread(strcat(dcm_dir, curr_name));
+    images{inum} = curr_dcm;
+end
+%images array now contains the entire dataset of dicom files
+
+sX=size(images{5});
+
+%Splits image into 4 layers
+[LL,LH,HL,HH]=dwt2(images{5},'db1');
+[LL2, LH2, HL2 ,HH2] = dwt2(LL, 'db1');
+[LL3, LH3, HL3, HH3] = dwt2(LL2, 'db1');
+[LL4, LH4, HL4, HH4] = dwt2(LL3, 'db1');
+[LL5, LH5, HL5, HH5] = dwt2(LL4, 'db1');
+
+figure(1)
+subplot(4,5,1);imshow(LL2);title('LL band of image');
+subplot(4,5,1);imshow(LL2);title('LL band of image');
+subplot(4,5,1);imshow(LL2);title('LL band of image');
+subplot(4,5,1);imshow(LL2);title('LL band of image');
+subplot(4,5,1);imshow(LL2);title('LL band of image');
+subplot(4,5,2);imshow(LH2);title('LH band of image');
+subplot(4,5,3);imshow(HL2);title('HL band of image');
+subplot(4,5,4);imshow(HH2);title('HH band of image');
+subplot(4,5,5);imshow(LL3);title('HH band of image');
+subplot(4,5,6);imshow(LH3);title('HH band of image');
+subplot(4,5,7);imshow(HL3);title('HH band of image');
+subplot(4,5,8);imshow(HH3);title('HH band of image');
+subplot(4,5,9);imshow(LL4);title('HH band of image');
+subplot(4,5,10);imshow(LH4);title('HH band of image');
+subplot(4,5,11);imshow(HL4);title('HH band of image');
+subplot(4,5,12);imshow(HH4);title('HH band of image');
+subplot(4,5,13);imshow(LL5);title('HH band of image');
+subplot(4,5,14);imshow(LH5);title('HH band of image');
+subplot(4,5,15);imshow(HL5);title('HH band of image');
+subplot(4,5,16);imshow(HH5);title('HH band of image');
+X = idwt2(5A,cH,cV,cD,'db1',sX);
+
+imshow(X);
