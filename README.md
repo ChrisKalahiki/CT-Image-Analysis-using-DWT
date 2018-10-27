@@ -8,18 +8,25 @@ CT scans of lungs
 
 # Files
 dwt_wavelet_name.m
+<br>
 • Simple dwt reconstruction of a wave. Plotted with labels
 
 dwt_wavelet_and_scaling_features.m
+<br>
 • Adds scaling features to the previous file
 
 dwt_image.m
+<br>
 • First attempt at using dwt functionality on an image
 
 dwt_5_layers_disp.m
+<br>
 • Explored further extraction on one of the images from the dataset
+<br>
 • Display all of the layers that were extracted
 
 scratchwork.m
+<br>
 • Where I work on the next step of the process.
+<br>
 • Currently using it to try and format a 2D array to store all of the sub-images for each DICOM file
