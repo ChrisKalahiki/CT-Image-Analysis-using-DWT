@@ -3,7 +3,9 @@ Using discrete wavelet transform for feature extraction of CT medical images. We
 
 # Data Set
 CT scans of lungs
+<br>
 • dicom_dir contains 100 CT scans in the DICOM format
+<br>
 • tiff_images contains the same 100 CT scans in the TIFF format
 
 # Files
