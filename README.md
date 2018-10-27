@@ -1,5 +1,5 @@
 # Introduction
-Using discrete wavelet transform for feature extraction of CT medical images. We aim to identify outliers that may be caused by poor calibration of the machine or other outliers.
+Using discrete wavelet transform for feature extraction of CT medical images. We aim to identify outliers that may be caused by medical discrepencies, poor calibration of the machine, or other outliers.
 
 # Data Set
 CT scans of lungs
