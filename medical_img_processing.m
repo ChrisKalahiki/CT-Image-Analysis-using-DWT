@@ -34,7 +34,7 @@ imt = imtool(im, [0, max_level]);
 %% Explore dataset as a montage
 imtool close all
 
-%% Extract features using DWT (Currently using only the first image)
+%% Extract features using DWT
 %Splits image into 4 layers. Then continues to divide the LL layer.
 [LL,LH,HL,HH]=dwt2(ctscan(:,:,1),'haar');
 [LL2, LH2, HL2 ,HH2] = dwt2(LL, 'haar');
