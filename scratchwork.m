@@ -67,3 +67,11 @@ subplot(5,4,20);imshow(HH5);title('HH5 band of image');
 X = idwt2(LL,LH,HL,HH,'haar',size(ctscan(:,:,1)));
 imshow(X);
 
+%% K-Means Clustering on the standard DICOM Images
+% kmeans into 4 clusters for first dicom file
+idx = kmeans(ctscan(:,:,1), 4);
+
+% format and output results
+max_lvl = double(max(idx(:)));
+imt2 = imtool(idx, [0, max_lvl]);
+% Currently not getting anything usable
