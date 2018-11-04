@@ -1,6 +1,4 @@
-%% Start with clean slate
-clear all; close all; clc; imtool close all;
-set(0, 'DefaultFigureWindowStyle','docked');
+
 
 %% Specify data file directory
 fileFolder = fullfile(pwd, 'dicom_dir');
