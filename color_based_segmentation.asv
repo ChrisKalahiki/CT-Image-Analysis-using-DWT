@@ -2,70 +2,22 @@
 clear all; close all; clc; imtool close all;
 set(0, 'DefaultFigureWindowStyle','docked');
 
-%% Step 1
+%% Read in Image
 he = imread('tiff_images/ID_0000_AGE_0060_CONTRAST_1_CT.tif');
-imshow(he), title('TIFF Image');
 
+%% DWT
+[LL, LH, HL, HH] = dwt2(he, 'haar');
+new_dwt = 
 %% K-means clustering
 I = im2double(he);
-disp(I);
-c = kmeans(I, 3);
+c = kmeans(I(:), 12);
+
+%% reshape
 p = reshape(c, size(I));
 
 %% Output
-imshow(p);
+%disp(p);
 
-%% DWT
-% [LL, LH, HL, HH] = dwt2(he, 'haar');
-
-%% Figure
-% figure(1);
-% subplot(2,2,1);imshow(LL);title(LL);
-% subplot(2,2,2);imshow(LH);title(LH);
-% subplot(2,2,3);imshow(HL);title(HL);
-% subplot(2,2,4);imshow(HH);title(HH);
-% X = idwt2(LL, LH, HL, LL, 'haar');
-
-%% Comments
-% %% Step 2
-% lab_he = rgb2lab(he);
-% 
-% %% Step 3
-% ab = lab_he(:,:,2:3);
-% ab = im2single(ab);
-% nColors = 3;
-% % repeat the clustering 3 times to avoid local minima
-% pixel_labels = imsegkmeans(ab,nColors,'NumAttempts',3);
-% 
-% imshow(pixel_labels,[])
-% title('Image Labeled by Cluster Index');
-% 
-% %% Step 4
-% mask1 = pixel_labels==1;
-% cluster1 = he .* uint8(mask1);
-% imshow(cluster1)
-% title('Objects in Cluster 1');
-% 
-% mask2 = pixel_labels==2;
-% cluster2 = he .* uint8(mask2);
-% imshow(cluster2)
-% title('Objects in Cluster 2');
-% 
-% mask3 = pixel_labels==3;
-% cluster3 = he .* uint8(mask3);
-% imshow(cluster3)
-% title('Objects in Cluster 3');
-% 
-% %% Step 5
-% L = lab_he(:,:,1);
-% L_blue = L .* double(mask3);
-% L_blue = rescale(L_blue);
-% idx_light_blue = imbinarize(nonzeros(L_blue));
-% 
-% blue_idx = find(mask3);
-% mask_dark_blue = mask3;
-% mask_dark_blue(blue_idx(idx_light_blue)) = 0;
-% 
-% blue_nuclei = he .* uint8(mask_dark_blue);
-% imshow(blue_nuclei)
-% title('Blue Nuclei');
+%% Back to image
+image = mat2gray(p);
+imshow(image);
