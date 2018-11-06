@@ -99,37 +99,25 @@ csvwrite('post_dwt_ta_filter_layer3.csv', array_layer3)
 %% Subplots for filtering images
 
 figure('Name', 'Pre-Filtering Layer 1', 'NumberTitle', 'off');
-subplot(2,2,1);imshow(LL, []);title('LL');
-subplot(2,2,2);imshow(LH, []);title('LH');
-subplot(2,2,3);imshow(HL, []);title('HL');
-subplot(2,2,4);imshow(HH, []);title('HH');
+subplot(1,4,1);imshow(LL, []);title('LL');
+subplot(1,4,2);imshow(LH, []);title('LH');
+subplot(1,4,3);imshow(HL, []);title('HL');
+subplot(1,4,4);imshow(HH, []);title('HH');
 
 figure('Name','DWT Entropy Filtering Layer 1','NumberTitle','off');
-subplot(2,2,1);imshow(ll_post_filter, []);title('LL');
-subplot(2,2,2);imshow(lh_post_filter, []);title('LH');
-subplot(2,2,3);imshow(hl_post_filter, []);title('HL');
-subplot(2,2,4);imshow(hh_post_filter, []);title('HH');
+subplot(1,4,1);imshow(ll_post_filter, []);title('LL');
+subplot(1,4,2);imshow(lh_post_filter, []);title('LH');
+subplot(1,4,3);imshow(hl_post_filter, []);title('HL');
+subplot(1,4,4);imshow(hh_post_filter, []);title('HH');
 
 figure('Name','Pre-Filtering Layer 2','NumberTitle','off');
-subplot(2,2,1);imshow(LL2, []);title('LL2');
-subplot(2,2,2);imshow(LH2, []);title('LH2');
-subplot(2,2,3);imshow(HL2, []);title('HL2');
-subplot(2,2,4);imshow(HH2, []);title('HH2');
+subplot(1,4,1);imshow(LL2, []);title('LL2');
+subplot(1,4,2);imshow(LH2, []);title('LH2');
+subplot(1,4,3);imshow(HL2, []);title('HL2');
+subplot(1,4,4);imshow(HH2, []);title('HH2');
 
 figure('Name','DWT Entropy Filtering Layer 2','NumberTitle','off');
-subplot(2,2,1);imshow(ll2_post_filter, []);title('LL2');
-subplot(2,2,2);imshow(lh2_post_filter, []);title('LH2');
-subplot(2,2,3);imshow(hl2_post_filter, []);title('HL2');
-subplot(2,2,4);imshow(hh2_post_filter, []);title('HH2');
-
-figure('Name','Pre-Filtering Layer 3','NumberTitle','off');
-subplot(2,2,1);imshow(LL3, []);title('LL3');
-subplot(2,2,2);imshow(LH3, []);title('LH3');
-subplot(2,2,3);imshow(HL3, []);title('HL3');
-subplot(2,2,4);imshow(HH3, []);title('HH3');
-
-figure('Name','DWT Entropy Filtering Layer 3','NumberTitle','off');
-subplot(2,2,1);imshow(ll3_post_filter, []);title('LL3');
-subplot(2,2,2);imshow(lh3_post_filter, []);title('LH3');
-subplot(2,2,3);imshow(hl3_post_filter, []);title('HL3');
-subplot(2,2,4);imshow(hh3_post_filter, []);title('HH3');
+subplot(1,4,1);imshow(ll2_post_filter, []);title('LL');
+subplot(1,4,2);imshow(lh2_post_filter, []);title('LH');
+subplot(1,4,3);imshow(hl2_post_filter, []);title('HL');
+subplot(1,4,4);imshow(hh2_post_filter, []);title('HH');
