@@ -27,6 +27,7 @@ end
 delete(hWaitBar)
 
 %% Explore image data usign Image Viewer GUI tool
+
 im = ctscan(:,:,30); % using the 30th ct scan here
 max_level = double(max(im(:)));
 imt = imtool(im, [0, max_level]);
@@ -133,3 +134,82 @@ subplot(2,2,1);imshow(ll3_post_filter, []);title('LL3');
 subplot(2,2,2);imshow(lh3_post_filter, []);title('LH3');
 subplot(2,2,3);imshow(hl3_post_filter, []);title('HL3');
 subplot(2,2,4);imshow(hh3_post_filter, []);title('HH3');
+
+%% K-means clustering
+I_ll = im2double(ll_post_filter);
+I_lh = im2double(lh_post_filter);
+I_hl = im2double(hl_post_filter);
+I_hh = im2double(hh_post_filter);
+
+c_ll = kmeans(I_ll(:), 25);
+c_lh = kmeans(I_lh(:), 25);
+c_hl = kmeans(I_hl(:), 25);
+c_hh = kmeans(I_hh(:), 25);
+
+I_ll2 = im2double(ll2_post_filter);
+I_lh2 = im2double(lh2_post_filter);
+I_hl2 = im2double(hl2_post_filter);
+I_hh2 = im2double(hh2_post_filter);
+
+c_ll2 = kmeans(I_ll2(:), 25);
+c_lh2 = kmeans(I_lh2(:), 25);
+c_hl2 = kmeans(I_hl2(:), 25);
+c_hh2 = kmeans(I_hh2(:), 25);
+
+I_ll3 = im2double(ll3_post_filter);
+I_lh3 = im2double(lh3_post_filter);
+I_hl3 = im2double(hl3_post_filter);
+I_hh3 = im2double(hh3_post_filter);
+
+c_ll3 = kmeans(I_ll3(:), 25);
+c_lh3 = kmeans(I_lh3(:), 25);
+c_hl3 = kmeans(I_hl3(:), 25);
+c_hh3 = kmeans(I_hh3(:), 25);
+%% Reshaping
+p_ll = reshape(c_ll, size(I_ll));
+p_lh = reshape(c_lh, size(I_lh));
+p_hl = reshape(c_hl, size(I_hl));
+p_hh = reshape(c_hh, size(I_hh));
+
+p_ll2 = reshape(c_ll2, size(I_ll2));
+p_lh2 = reshape(c_lh2, size(I_lh2));
+p_hl2 = reshape(c_hl2, size(I_hl2));
+p_hh2 = reshape(c_hh2, size(I_hh2));
+
+p_ll3 = reshape(c_ll3, size(I_ll3));
+p_lh3 = reshape(c_lh3, size(I_lh3));
+p_hl3 = reshape(c_hl3, size(I_hl3));
+p_hh3 = reshape(c_hh3, size(I_hh3));
+%% Back to image
+ll_kmeans = mat2gray(p_ll);
+lh_kmeans = mat2gray(p_lh);
+hl_kmeans = mat2gray(p_hl);
+hh_kmeans = mat2gray(p_hh);
+
+ll2_kmeans = mat2gray(p_ll2);
+lh2_kmeans = mat2gray(p_lh2);
+hl2_kmeans = mat2gray(p_hl2);
+hh2_kmeans = mat2gray(p_hh2);
+
+ll3_kmeans = mat2gray(p_ll3);
+lh3_kmeans = mat2gray(p_lh3);
+hl3_kmeans = mat2gray(p_hl3);
+hh3_kmeans = mat2gray(p_hh3);
+%% Final Plotting
+figure('Name', 'K-Means Clustering Post-DWT & Entropy Filtering Layer 1', 'NumberTitle', 'off');
+subplot(2,2,1);imshow(ll_kmeans, []);title('LL');
+subplot(2,2,2);imshow(lh_kmeans, []);title('LH');
+subplot(2,2,3);imshow(hl_kmeans, []);title('HL');
+subplot(2,2,4);imshow(hh_kmeans, []);title('HH');
+
+figure('Name', 'K-Means Clustering Post-DWT & Entropy Filtering Layer 2', 'NumberTitle', 'off');
+subplot(2,2,1);imshow(ll2_kmeans, []);title('LL2');
+subplot(2,2,2);imshow(lh2_kmeans, []);title('LH2');
+subplot(2,2,3);imshow(hl2_kmeans, []);title('HL2');
+subplot(2,2,4);imshow(hh2_kmeans, []);title('HH2');
+
+figure('Name', 'K-Means Clustering Post-DWT & Entropy Filtering Layer 3', 'NumberTitle', 'off');
+subplot(2,2,1);imshow(ll3_kmeans, []);title('LL3');
+subplot(2,2,2);imshow(lh3_kmeans, []);title('LH3');
+subplot(2,2,3);imshow(hl3_kmeans, []);title('HL3');
+subplot(2,2,4);imshow(hh3_kmeans, []);title('HH3');
